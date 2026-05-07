@@ -1,4 +1,4 @@
-const DAILY_ACTION_POINTS = 12;
+const DAILY_ACTION_POINTS = 15;
 const SAVE_KEY = "station404_save";
 
 function getDefaultSave() {
@@ -7,7 +7,7 @@ function getDefaultSave() {
     funds: 18,
     pollution: 12,
     trust: 72,
-    actionPoints: 12,
+    actionPoints: 15,
 
     usedItemIds: [],
     gameFlags: [],
