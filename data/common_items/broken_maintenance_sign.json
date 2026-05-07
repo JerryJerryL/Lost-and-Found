@@ -1,0 +1,34 @@
+{
+  "id": "broken_maintenance_sign",
+  "code": "C-111",
+  "name": "破损维修牌",
+  "icon": "🚧",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "rule_tease",
+    "rarity": "normal",
+    "weight": 2,
+    "riskLevel": 1,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "废弃轨道电梯控制室",
+    "owner": "旧维修团队",
+    "anomaly": "低",
+    "description": "一块黄色维修警示牌，中间裂开一道缝。正面写着“维修中”，背面用手写字标注“不要修好”。"
+  },
+  "investigations": {
+    "id": { "text": "编号 C-111 有效，属于站点维护类资产。", "checklistState": "pass", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["broken_sign_id_checked"] },
+    "source": { "text": "来源为一座废弃轨道电梯的控制室。该电梯状态长期显示为“维护中”。", "checklistState": "pass", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["broken_sign_source_checked"] },
+    "owner": { "text": "该轨道电梯维修团队全员已退休，无当前认领申请。", "checklistState": "suspect", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["broken_sign_owner_checked"] },
+    "scan": { "text": "该警示牌附近的故障设备会保持“未彻底损坏，也未完全修复”的状态。", "checklistState": "suspect", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["broken_sign_stasis_scan"] },
+    "read": { "text": "背面字迹经比对属于维修主管。其事故报告中写道：“完全修好后，它开始运人去不存在的楼层。”", "checklistState": "conflict", "effects": { "funds": 0, "pollution": 1, "trust": 0 }, "flags": ["broken_sign_warning_read"] }
+  },
+  "dispositions": {
+    "return": { "effects": { "funds": 2, "pollution": 0, "trust": 1 }, "previewLocks": { "funds": ["source"], "pollution": ["scan"], "trust": ["owner"] }, "log": "维修牌已归还旧维修档案。轨道电梯档案恢复为“维护中”。", "flags": ["broken_sign_returned"] },
+    "seal": { "effects": { "funds": -1, "pollution": 0, "trust": 0 }, "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["source"] }, "log": "维修牌被封存。封存柜门出现轻微卡顿。", "flags": ["broken_sign_sealed"] },
+    "destroy": { "effects": { "funds": 0, "pollution": -1, "trust": -1 }, "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["owner"] }, "log": "维修牌被销毁。某个旧维修工单自动关闭。", "flags": ["broken_sign_destroyed"] },
+    "sell": { "effects": { "funds": 3, "pollution": 1, "trust": -2 }, "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["owner"] }, "log": "维修牌被售出。买家反馈：挂上以后，家里的坏灯再也没有彻底坏掉。", "flags": ["broken_sign_sold"] }
+  }
+}

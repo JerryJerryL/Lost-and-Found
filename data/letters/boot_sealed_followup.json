@@ -1,0 +1,31 @@
+{
+  "id": "boot_sealed_followup",
+  "type": "letter",
+  "day": 4,
+  "title": "封存柜 C-12 夜间异常报告",
+  "sender": {
+    "name": "站点自动监控系统",
+    "role": "Station 404 Internal Security",
+    "portrait": ""
+  },
+  "category": "followup",
+  "priority": "warning",
+  "body": [
+    "03:17，封存柜 C-12 出现未授权温度波动。",
+    "柜内未检测到生命体征。",
+    "柜门前地面出现蓝色沙粒脚印。脚印尺寸与 L-017 儿童太空鞋一致。",
+    "脚印终止于员工休息区门口。"
+  ],
+  "effects": {
+    "funds": 0,
+    "pollution": 2,
+    "trust": -1
+  },
+  "flagsRequired": [
+    "boot_sealed"
+  ],
+  "flagsAdded": [
+    "boot_footprints_reported"
+  ],
+  "readOnce": true
+}

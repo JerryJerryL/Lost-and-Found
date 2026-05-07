@@ -1,0 +1,176 @@
+{
+  "id": "door_card",
+  "code": "L-041",
+  "name": "失效门禁卡",
+  "icon": "🪪",
+  "internal": {
+    "day": 2,
+    "slot": "tutorial",
+    "primaryTag": "tutorial",
+    "tags": [
+      "tutorial",
+      "low_risk",
+      "access_anomaly"
+    ],
+    "riskLevel": 1,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "第404号站点员工休息室门口",
+    "owner": "未知员工",
+    "anomaly": "低",
+    "description": "一张老式磁条门禁卡，边角磨损严重。卡面印着第404号站点的旧徽标，权限状态显示为已失效。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 L-041 存在于旧员工资产库。该卡权限已于17年前注销。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "door_card_id_valid"
+      ]
+    },
+    "source": {
+      "text": "监控记录显示，该卡今日 06:12 刷开了员工休息室。刷卡画面存在 4.8 秒空白。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "door_card_used_today"
+      ]
+    },
+    "owner": {
+      "text": "持卡人姓名字段为空。旧权限表显示，该卡曾分配给“夜班临时管理员”，但员工编号缺失。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "door_card_owner_missing"
+      ]
+    },
+    "scan": {
+      "text": "磁条仍保留最近一次访问记录。访问地点：员工休息室。访问人：未检测到申请人。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "door_card_no_applicant"
+      ]
+    },
+    "read": {
+      "text": "深度读取后，卡内备注字段短暂显示：“离站申请失败。原因：未检测到申请人。”",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "door_card_exit_denied"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 2,
+        "pollution": 1,
+        "trust": 2
+      },
+      "log": "门禁卡被转交给公司安全部。系统随后提示：旧权限表已恢复一名夜班临时管理员。",
+      "flags": [
+        "door_card_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -1,
+        "pollution": 1,
+        "trust": 1
+      },
+      "log": "门禁卡被封存。夜间，员工休息室门锁自动完成了一次开关循环。",
+      "flags": [
+        "door_card_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -1,
+        "trust": -1
+      },
+      "log": "门禁卡被销毁。员工休息室门禁记录中仍保留今日 06:12 的访问记录。",
+      "flags": [
+        "door_card_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 4,
+        "pollution": 2,
+        "trust": -4
+      },
+      "log": "门禁卡被转入私人回收渠道。数分钟后，站点入口记录显示该卡正在请求进入。",
+      "flags": [
+        "door_card_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    }
+  }
+}

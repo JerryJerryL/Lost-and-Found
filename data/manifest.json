@@ -1,0 +1,55 @@
+{
+  "demoDays": {
+    "3": {
+      "storyItem": "boot",
+      "commonPool": "default",
+      "commonCount": 5,
+      "letters": ["day3_greeting"]
+    },
+    "4": {
+      "storyItem": "auto_claim_form",
+      "commonPool": "default",
+      "commonCount": 5,
+      "letters": ["day4_greeting"]
+    },
+    "5": {
+      "storyItem": "black_box",
+      "commonPool": "default",
+      "commonCount": 5,
+      "letters": ["day5_greeting"]
+    }
+  },
+  "commonPools": {
+    "default": [
+      "earth_umbrella",
+      "imperial_coin",
+      "birthday_gift",
+      "meal_ticket",
+      "shadowless_helmet",
+      "blank_warranty",
+      "half_family_photo",
+      "silent_beacon",
+      "oxygen_filter",
+      "zero_g_coffee",
+      "broken_maintenance_sign",
+      "stamp_less_postcard"
+    ]
+  },
+  "conditionalLetters": [
+    {
+      "id": "boot_sealed_followup",
+      "day": 4,
+      "requires": ["boot_sealed"]
+    },
+    {
+      "id": "glove_sold_followup",
+      "day": 4,
+      "requires": ["glove_sold"]
+    },
+    {
+      "id": "ring_return_followup",
+      "day": 4,
+      "requires": ["ring_returned"]
+    }
+  ]
+}

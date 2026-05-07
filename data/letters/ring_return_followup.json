@@ -1,0 +1,31 @@
+{
+  "id": "ring_return_followup",
+  "type": "letter",
+  "day": 4,
+  "title": "婚姻记录自动更新通知",
+  "sender": {
+    "name": "民事档案同步系统",
+    "role": "Civil Archive Sync",
+    "portrait": ""
+  },
+  "category": "followup",
+  "priority": "urgent",
+  "body": [
+    "检测到 L-021 没有主人的婚戒处理后产生档案同步。",
+    "失踪飞行员婚姻状态已更新为：已婚。",
+    "配偶姓名与昨日认领人一致。",
+    "错误：配偶出生记录不存在。"
+  ],
+  "effects": {
+    "funds": 0,
+    "pollution": 3,
+    "trust": -1
+  },
+  "flagsRequired": [
+    "ring_returned"
+  ],
+  "flagsAdded": [
+    "ring_marriage_record_changed"
+  ],
+  "readOnce": true
+}

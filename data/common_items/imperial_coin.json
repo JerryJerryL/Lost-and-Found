@@ -1,0 +1,173 @@
+{
+  "id": "imperial_coin",
+  "code": "C-102",
+  "name": "旧帝国纪念币",
+  "icon": "🪙",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "economy",
+    "rarity": "normal",
+    "weight": 3,
+    "riskLevel": 1,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "退役贵族邮包",
+    "owner": "未知收藏者",
+    "anomaly": "低",
+    "description": "一枚旧帝国纪念币，正反面都刻着同一位皇帝。两面的死亡年份不一致。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 C-102 有效，市场估值较高。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "imperial_coin_value_known"
+      ]
+    },
+    "source": {
+      "text": "退役贵族邮包来源合法，但寄件家族在三份历史记录中有三种灭亡日期。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "imperial_coin_house_dates"
+      ]
+    },
+    "owner": {
+      "text": "无明确物主。已有两名收藏者申请购买，但无人正式认领。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "imperial_coin_no_owner"
+      ]
+    },
+    "scan": {
+      "text": "硬币材质稳定。年份刻痕会在扫描间隔中轻微变化。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "imperial_coin_year_shifts"
+      ]
+    },
+    "read": {
+      "text": "放大后，皇帝肖像的眼睛分别看向两面不同年份。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "imperial_coin_portrait_seen"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 1,
+        "pollution": 0,
+        "trust": 1
+      },
+      "log": "纪念币被转交公共历史馆。历史馆回执：将暂存所有年份版本。",
+      "flags": [
+        "imperial_coin_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -1,
+        "pollution": 0,
+        "trust": 1
+      },
+      "log": "纪念币被封存。封存标签上的年份自动刷新了两次。",
+      "flags": [
+        "imperial_coin_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -1,
+        "trust": -1
+      },
+      "log": "纪念币被熔毁。旧帝国年表少了一条脚注。",
+      "flags": [
+        "imperial_coin_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 7,
+        "pollution": 1,
+        "trust": -3
+      },
+      "log": "纪念币被出售。买家来信询问：哪一年死亡版本最值钱？",
+      "flags": [
+        "imperial_coin_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "id": "star_core",
+  "code": "L-073",
+  "name": "未登记恒星核心样本",
+  "icon": "☀️",
+  "internal": {
+    "day": 2,
+    "slot": "economy",
+    "primaryTag": "economy",
+    "tags": [
+      "economy",
+      "high_value",
+      "high_risk",
+      "research_value"
+    ],
+    "riskLevel": 4,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "无登记冷藏货柜",
+    "owner": "多方认领",
+    "anomaly": "高",
+    "description": "一枚悬浮在透明容器中的微型发光核心。容器外壳冰冷，内部却持续释放恒星级光谱。封存柜无需供电也能被它照亮。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 L-073 为临时入库编号。市场估值字段无法稳定显示，最高估值超过本站月度预算。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "star_core_high_value"
+      ]
+    },
+    "source": {
+      "text": "冷藏货柜没有发货方记录。货柜外层结霜形成一串坐标，但坐标位于一颗尚未诞生的恒星内部。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "star_core_unborn_star"
+      ]
+    },
+    "owner": {
+      "text": "两家研究机构、一家军工公司和公司回收部同时申请转交。监管备注：禁止未经审查的外部移交。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "star_core_multiple_claimants"
+      ]
+    },
+    "scan": {
+      "text": "核心温度读数无法稳定。每次扫描都会让周围时钟慢 0.7 秒。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 3,
+        "trust": 0
+      },
+      "flags": [
+        "star_core_time_slow"
+      ]
+    },
+    "read": {
+      "text": "容器内壁出现微小等离子文字：“请不要把黎明卖掉。”文字在 2 秒后蒸发。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 4,
+        "trust": 0
+      },
+      "flags": [
+        "star_core_dawn_message"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 10,
+        "pollution": 5,
+        "trust": 3
+      },
+      "log": "恒星核心样本被转交给最高优先级研究机构。研究机构立刻回执：样本已用于点燃一项尚未批准的黎明实验。",
+      "flags": [
+        "star_core_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "source",
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -4,
+        "pollution": 3,
+        "trust": 2
+      },
+      "log": "恒星核心样本被高能封存。封存柜持续发光，电力账单却没有变化。",
+      "flags": [
+        "star_core_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -5,
+        "pollution": -5,
+        "trust": -4
+      },
+      "log": "销毁程序完成。第404号站点外的星图短暂变暗，随后恢复。",
+      "flags": [
+        "star_core_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan",
+          "read"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 16,
+        "pollution": 6,
+        "trust": -8
+      },
+      "log": "私人买家支付巨额费用。付款备注：已收到一小块明天早晨。",
+      "flags": [
+        "star_core_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    }
+  }
+}

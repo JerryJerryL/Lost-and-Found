@@ -1,0 +1,173 @@
+{
+  "id": "earth_umbrella",
+  "code": "C-101",
+  "name": "旧地球雨伞",
+  "icon": "☂️",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "rule_tease",
+    "rarity": "normal",
+    "weight": 3,
+    "riskLevel": 1,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "旧地球气候馆遗留仓",
+    "owner": "气候馆收藏部门",
+    "anomaly": "低",
+    "description": "一把深灰色折叠雨伞，伞面始终保持潮湿。伞柄刻有一行小字：请在室内打开。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 C-101 格式正确，登记为低风险民用遗物。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "earth_umbrella_id_checked"
+      ]
+    },
+    "source": {
+      "text": "旧地球气候馆已于42年前关闭，但仓库温湿度记录显示仍有局部降雨。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "earth_umbrella_source_suspect"
+      ]
+    },
+    "owner": {
+      "text": "气候馆收藏部门仍然存在，认领申请有效，但申请人备注称：请勿在干燥区域归还。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "earth_umbrella_owner_valid"
+      ]
+    },
+    "scan": {
+      "text": "伞面水珠成分接近旧地球城市降雨，含微量柏油和花粉颗粒。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "earth_umbrella_rain_scan"
+      ]
+    },
+    "read": {
+      "text": "打开伞后，终端拾取到短暂雨声。声音下方有车辆经过积水的回响。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "earth_umbrella_opened"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 2,
+        "pollution": 1,
+        "trust": 1
+      },
+      "log": "旧地球雨伞已归还气候馆收藏部门。系统记录：本站走廊出现47秒局部降雨。",
+      "flags": [
+        "earth_umbrella_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "owner"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -1,
+        "pollution": 0,
+        "trust": 1
+      },
+      "log": "旧地球雨伞被封存。封存柜内湿度稳定上升。",
+      "flags": [
+        "earth_umbrella_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -1,
+        "trust": -1
+      },
+      "log": "雨伞被销毁。销毁炉排气口出现潮湿气味。",
+      "flags": [
+        "earth_umbrella_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 4,
+        "pollution": 1,
+        "trust": -2
+      },
+      "log": "雨伞被卖给怀旧收藏商。买家评价：伞下的雨很像我没去过的家乡。",
+      "flags": [
+        "earth_umbrella_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    }
+  }
+}

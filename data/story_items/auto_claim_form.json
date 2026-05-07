@@ -1,0 +1,177 @@
+{
+  "id": "auto_claim_form",
+  "code": "L-066",
+  "name": "会自动填写的认领表",
+  "icon": "📄",
+  "internal": {
+    "day": 4,
+    "slot": "pollution",
+    "primaryTag": "pollution",
+    "tags": [
+      "pollution",
+      "claim_mechanism",
+      "identity_anomaly"
+    ],
+    "riskLevel": 3,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "前台打印机出纸口",
+    "owner": "无",
+    "anomaly": "中",
+    "description": "一张标准失物认领表，纸面空白，边缘整齐。每当有人靠近，认领人字段都会自动浮现一行淡灰色文字。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 L-066 不存在于入库记录。系统显示该表格已经被创建 0 次，归档 12 次。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "auto_form_id_conflict"
+      ]
+    },
+    "source": {
+      "text": "来源定位为本站前台打印机。打印机日志显示昨夜没有打印任务，但纸张计数减少 1。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "auto_form_printer_source"
+      ]
+    },
+    "owner": {
+      "text": "认领人字段自动填入当前观察者姓名。离开视线后，字段恢复为空。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "auto_form_observer_name"
+      ]
+    },
+    "scan": {
+      "text": "纸张表面无墨迹残留。文字不是写在纸上，而是出现在扫描图层中。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "auto_form_text_in_scan"
+      ]
+    },
+    "read": {
+      "text": "深度读取后，物品名称栏短暂显示：“工作人员”。处理建议栏显示：“等待归还”。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 4,
+        "trust": 0
+      },
+      "flags": [
+        "auto_form_staff_item"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 0,
+        "pollution": 8,
+        "trust": -3
+      },
+      "log": "系统尝试归还认领表。处理失败：认领人已在柜台前。工作人员分类短暂闪烁。",
+      "flags": [
+        "auto_form_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "owner"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner",
+          "read"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -2,
+        "pollution": 3,
+        "trust": 1
+      },
+      "log": "认领表被封存。第二天，封存柜内多出三张空白表格。",
+      "flags": [
+        "auto_form_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -3,
+        "trust": -2
+      },
+      "log": "认领表被销毁。销毁记录自动生成一份新的认领表摘要。",
+      "flags": [
+        "auto_form_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": -6
+      },
+      "log": "系统拒绝出售：人员类文件禁止交易。该物品仍被标记为已转出。",
+      "flags": [
+        "auto_form_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    }
+  }
+}

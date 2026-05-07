@@ -1,0 +1,28 @@
+{
+  "id": "day3_greeting",
+  "type": "letter",
+  "day": 3,
+  "title": "第3日晨间通知",
+  "sender": {
+    "name": "奥尔文主管",
+    "role": "公司回收部主管",
+    "portrait": ""
+  },
+  "category": "greeting",
+  "priority": "normal",
+  "body": [
+    "早上好，管理员。",
+    "第404号站点今日预计送达六件失物。其中一件为必须处理的物件。",
+    "公司提醒：普通失物同样影响资金、污染和信任。请保持处理节奏。"
+  ],
+  "effects": {
+    "funds": 0,
+    "pollution": 0,
+    "trust": 0
+  },
+  "flagsRequired": [],
+  "flagsAdded": [
+    "day3_greeting_read"
+  ],
+  "readOnce": true
+}

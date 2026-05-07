@@ -1,0 +1,26 @@
+{
+  "id": "day5_greeting",
+  "type": "letter",
+  "day": 5,
+  "title": "第5日晨间通知",
+  "sender": {
+    "name": "奥尔文主管",
+    "role": "公司回收部主管",
+    "portrait": ""
+  },
+  "category": "greeting",
+  "priority": "warning",
+  "body": [
+    "管理员，第5日文件已送达。",
+    "今日有一件高优先级失物进入柜台。请先完成常规审查，再决定是否转交、封存、销毁或出售。",
+    "公司提示：第404号站点的异常趋势正在被观察。"
+  ],
+  "effects": {
+    "funds": 0,
+    "pollution": 0,
+    "trust": 0
+  },
+  "flagsRequired": [],
+  "flagsAdded": ["day5_greeting_read"],
+  "readOnce": true
+}

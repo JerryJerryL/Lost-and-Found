@@ -1,0 +1,177 @@
+{
+  "id": "reverse_log",
+  "code": "L-052",
+  "name": "倒放的航行日志",
+  "icon": "📼",
+  "internal": {
+    "day": 2,
+    "slot": "pollution",
+    "primaryTag": "pollution",
+    "tags": [
+      "pollution",
+      "mainline_hint",
+      "audio_anomaly"
+    ],
+    "riskLevel": 3,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "第七航道废弃信标",
+    "owner": "未知航行员",
+    "anomaly": "中",
+    "description": "一枚旧式磁带航行日志，外壳印有褪色的飞船编号。正向播放时没有任何声音，但倒带时会产生清晰的语音波形。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 L-052 已登记为航行记录介质。登记时间正常，但介质格式属于已淘汰的前殖民时代标准。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "reverse_log_id_valid"
+      ]
+    },
+    "source": {
+      "text": "第七航道废弃信标确实存在，但该信标于三年前停止工作。最近一次自动广播时间却显示为昨夜。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "reverse_log_beacon_recent"
+      ]
+    },
+    "owner": {
+      "text": "飞船编号无法匹配任何现存船只。旧档案中有一名航行员申请认领该日志，但申请日期为明天。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "reverse_log_owner_tomorrow"
+      ]
+    },
+    "scan": {
+      "text": "磁带表面无放射性污染，但音轨中存在反向语言结构。系统建议不要完整播放。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "reverse_log_scan_warning"
+      ]
+    },
+    "read": {
+      "text": "倒放后，日志中出现一句清晰语音：“如果你听见正向沉默，说明我们已经抵达第404号。”",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 4,
+        "trust": 0
+      },
+      "flags": [
+        "reverse_log_message_heard"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 4,
+        "pollution": 5,
+        "trust": 1
+      },
+      "log": "航行日志被登记为可归还记录。系统随后收到一份来自明天的认领确认。",
+      "flags": [
+        "reverse_log_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -2,
+        "pollution": 2,
+        "trust": 2
+      },
+      "log": "航行日志被封存。夜间，封存柜内持续传出倒带声，直到晨间通知开始。",
+      "flags": [
+        "reverse_log_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "source"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -4,
+        "trust": -2
+      },
+      "log": "磁带被销毁。销毁完成后，终端仍显示一条未播放音轨，长度为 00:00。",
+      "flags": [
+        "reverse_log_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan",
+          "read"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 7,
+        "pollution": 4,
+        "trust": -5
+      },
+      "log": "航行日志被卖给音频收藏商。数小时后，收藏商频道只剩连续倒带声。",
+      "flags": [
+        "reverse_log_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    }
+  }
+}

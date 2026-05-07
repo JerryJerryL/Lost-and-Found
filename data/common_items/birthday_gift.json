@@ -1,0 +1,173 @@
+{
+  "id": "birthday_gift",
+  "code": "C-103",
+  "name": "未寄出的生日礼物",
+  "icon": "🎁",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "emotional",
+    "rarity": "normal",
+    "weight": 2,
+    "riskLevel": 2,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "失联家庭货柜",
+    "owner": "收件人：米娅·兰",
+    "anomaly": "低",
+    "description": "一个包装完好的生日礼物，丝带没有老化。标签上写着：给米娅，八岁生日快乐。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 C-103 有效，登记为私人礼物类失物。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "birthday_gift_id_checked"
+      ]
+    },
+    "source": {
+      "text": "失联家庭货柜属于一次移民船延误事故。货柜到港时间比出发时间早11年。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "birthday_gift_source_suspect"
+      ]
+    },
+    "owner": {
+      "text": "收件人米娅·兰存在，但年龄字段在每次查询时减少一岁。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "birthday_gift_age_decreases"
+      ]
+    },
+    "scan": {
+      "text": "礼盒内部无法成像。扫描仪只记录到短暂笑声。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "birthday_gift_laughter"
+      ]
+    },
+    "read": {
+      "text": "标签背面出现一句话：请在我长大前送到。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "birthday_gift_note_read"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 2,
+        "pollution": 2,
+        "trust": 2
+      },
+      "log": "生日礼物已归还。收件人发来感谢信，但署名年龄比档案小一岁。",
+      "flags": [
+        "birthday_gift_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "owner"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -1,
+        "pollution": 1,
+        "trust": 1
+      },
+      "log": "生日礼物被封存。礼盒内的笑声在巡检时短暂出现。",
+      "flags": [
+        "birthday_gift_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -2,
+        "trust": -2
+      },
+      "log": "礼物被销毁。系统撤回一条未发送的生日祝福。",
+      "flags": [
+        "birthday_gift_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 5,
+        "pollution": 2,
+        "trust": -3
+      },
+      "log": "生日礼物被卖出。买家留言：盒子里传来一个孩子问今天是不是她的生日。",
+      "flags": [
+        "birthday_gift_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    }
+  }
+}

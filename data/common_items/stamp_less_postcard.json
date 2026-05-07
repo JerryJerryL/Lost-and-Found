@@ -1,0 +1,34 @@
+{
+  "id": "stamp_less_postcard",
+  "code": "C-112",
+  "name": "没有邮票的明信片",
+  "icon": "💌",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "emotional",
+    "rarity": "normal",
+    "weight": 2,
+    "riskLevel": 2,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "旅游飞船遗失物柜",
+    "owner": "多名认领人",
+    "anomaly": "低",
+    "description": "一张边缘卷曲的纸质明信片，正面印着一颗蓝色行星的海岸线。背面没有邮票，也没有完整地址，只写着：“下次一定带你来。”"
+  },
+  "investigations": {
+    "id": { "text": "编号 C-112 有效，但该物品曾多次入库。历史投递次数：19。", "checklistState": "suspect", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["postcard_id_checked"] },
+    "source": { "text": "来源记录每次不同，最近一次来自一艘旅游飞船的遗失物柜。", "checklistState": "suspect", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["postcard_source_varies"] },
+    "owner": { "text": "有 19 名认领人声称写过这张明信片，但笔迹均不一致。", "checklistState": "conflict", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["postcard_many_claimants"] },
+    "scan": { "text": "纸张纤维中存在微弱空间跃迁残留。异常等级低。", "checklistState": "suspect", "effects": { "funds": 0, "pollution": 1, "trust": 0 }, "flags": ["postcard_jump_residue"] },
+    "read": { "text": "背面文字短暂变化为：“这次我真的到了，只是你不在。”", "checklistState": "suspect", "effects": { "funds": 0, "pollution": 1, "trust": 0 }, "flags": ["postcard_message_changed"] }
+  },
+  "dispositions": {
+    "return": { "effects": { "funds": 2, "pollution": 1, "trust": 2 }, "previewLocks": { "funds": ["owner"], "pollution": ["scan"], "trust": ["owner"] }, "log": "明信片已归还认领人。认领人收到后表示自己从未写过这句话。", "flags": ["postcard_returned"] },
+    "seal": { "effects": { "funds": -1, "pollution": 0, "trust": 1 }, "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["source"] }, "log": "明信片被封存。地址栏每天多出一个字母。", "flags": ["postcard_sealed"] },
+    "destroy": { "effects": { "funds": 0, "pollution": -1, "trust": -1 }, "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["owner"] }, "log": "明信片被销毁。系统删除 19 条未完成投递记录。", "flags": ["postcard_destroyed"] },
+    "sell": { "effects": { "funds": 3, "pollution": 1, "trust": -2 }, "previewLocks": { "funds": ["id"], "pollution": ["read"], "trust": ["owner"] }, "log": "明信片被作为复古旅游纪念品售出。买家随后收到一张没有写地址的回信。", "flags": ["postcard_sold"] }
+  }
+}

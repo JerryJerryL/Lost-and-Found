@@ -1,0 +1,178 @@
+{
+  "id": "glove",
+  "code": "L-006",
+  "name": "旧式宇航员手套",
+  "icon": "🧤",
+  "internal": {
+    "day": 1,
+    "slot": "tutorial",
+    "primaryTag": "tutorial",
+    "tags": [
+      "tutorial",
+      "light_pollution",
+      "mainline_hint"
+    ],
+    "riskLevel": 1,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "木卫三残骸带",
+    "owner": "第六航道维修员",
+    "anomaly": "低",
+    "description": "一只老式宇航员外勤手套，指节处磨损严重。掌心写着一串模糊的手写数字。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 L-006 存在，登记时间为17年前。登记员签名与当前管理员姓名一致。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "glove_signature_found"
+      ]
+    },
+    "source": {
+      "text": "木卫三残骸带确有一次维修船事故，但事故报告显示所有遗物已在17年前归还。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "glove_returned_before"
+      ]
+    },
+    "owner": {
+      "text": "第六航道维修员已确认死亡。其家属曾认领过一只相同编号的手套。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "glove_owner_conflict"
+      ]
+    },
+    "scan": {
+      "text": "掌心区域检测到微弱心跳频率。手套内部无生物组织。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "glove_heartbeat_detected"
+      ]
+    },
+    "read": {
+      "text": "掌心数字被识别为一组坐标。坐标指向第404号失物招领处当前所在位置。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "glove_points_to_station"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 4,
+        "pollution": 3,
+        "trust": 1
+      },
+      "log": "系统将手套归还给已故维修员的家属。随后家属档案中出现第二次认领记录。",
+      "flags": [
+        "glove_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source",
+          "read"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -1,
+        "pollution": 1,
+        "trust": 2
+      },
+      "log": "手套被封存。夜间监控显示它的手指在玻璃后轻微弯曲。",
+      "flags": [
+        "glove_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "source"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -2,
+        "trust": -1
+      },
+      "log": "销毁完成。掌心坐标仍短暂显示在终端屏幕上。",
+      "flags": [
+        "glove_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan",
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 6,
+        "pollution": 2,
+        "trust": -4
+      },
+      "log": "手套被转交给收藏商。当天晚些时候，收藏商发来一张照片：他戴着它，站在你的柜台前。",
+      "flags": [
+        "glove_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    }
+  }
+}

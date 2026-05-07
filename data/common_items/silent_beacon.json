@@ -1,0 +1,173 @@
+{
+  "id": "silent_beacon",
+  "code": "C-108",
+  "name": "静音求救灯",
+  "icon": "🚨",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "pollution",
+    "rarity": "normal",
+    "weight": 2,
+    "riskLevel": 2,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "事故航道救援浮标",
+    "owner": "未确认船员",
+    "anomaly": "中",
+    "description": "一盏小型求救信标灯，灯罩有裂纹。它每闪烁一次，周围声音都会短暂消失。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 C-108 有效，属于常规救援设备。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "silent_beacon_id_checked"
+      ]
+    },
+    "source": {
+      "text": "事故航道记录存在，但救援浮标原本没有配置静音型号。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "silent_beacon_source_suspect"
+      ]
+    },
+    "owner": {
+      "text": "未确认船员共有6名可能物主。所有认领申请均为空白音频文件。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "silent_beacon_blank_audio_claims"
+      ]
+    },
+    "scan": {
+      "text": "信标灯闪烁时，周围声音波形被清零 1.2 秒。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "silent_beacon_sound_null"
+      ]
+    },
+    "read": {
+      "text": "读取求救缓存后，终端显示：求救内容已发送。内容长度：静音。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "silent_beacon_sos_read"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 3,
+        "pollution": 3,
+        "trust": 1
+      },
+      "log": "静音求救灯已归还事故档案部。回执音频为空，但时长超过六小时。",
+      "flags": [
+        "silent_beacon_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "owner"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -2,
+        "pollution": 1,
+        "trust": 2
+      },
+      "log": "静音求救灯被封存。封存柜周围的提示音延迟了一秒。",
+      "flags": [
+        "silent_beacon_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -3,
+        "trust": -1
+      },
+      "log": "求救灯被销毁。销毁完成提示没有发出声音。",
+      "flags": [
+        "silent_beacon_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 5,
+        "pollution": 3,
+        "trust": -4
+      },
+      "log": "静音求救灯被售出。买家的语音频道从此保持连接，但没有声音。",
+      "flags": [
+        "silent_beacon_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    }
+  }
+}

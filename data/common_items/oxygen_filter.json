@@ -1,0 +1,79 @@
+{
+  "id": "oxygen_filter",
+  "code": "C-109",
+  "name": "过期氧气滤芯",
+  "icon": "🫁",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "atmosphere",
+    "rarity": "normal",
+    "weight": 3,
+    "riskLevel": 1,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "退役殖民船“白桦号”",
+    "owner": "殖民纪念馆代收",
+    "anomaly": "低",
+    "description": "一枚圆柱形氧气滤芯，外壳标签已泛黄。生产批次属于早期殖民时代，理论寿命早已结束，但检测显示它仍能正常工作。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 C-109 有效，登记为旧式生命维持设备。",
+      "checklistState": "pass",
+      "effects": { "funds": 0, "pollution": 0, "trust": 0 },
+      "flags": ["oxygen_filter_id_checked"]
+    },
+    "source": {
+      "text": "来源为退役殖民船“白桦号”。该船已拆解 31 年，但生命维持设备清单仍显示一枚滤芯未归档。",
+      "checklistState": "suspect",
+      "effects": { "funds": 0, "pollution": 0, "trust": 0 },
+      "flags": ["oxygen_filter_source_checked"]
+    },
+    "owner": {
+      "text": "原物主为一名殖民地园艺师，死亡记录完整。其家属授权殖民纪念馆代为接收遗物。",
+      "checklistState": "pass",
+      "effects": { "funds": 0, "pollution": 0, "trust": 0 },
+      "flags": ["oxygen_filter_owner_checked"]
+    },
+    "scan": {
+      "text": "过滤后的空气含有旧地球降雨后的有机气味。成分无法匹配当前星际环境数据库。",
+      "checklistState": "suspect",
+      "effects": { "funds": 0, "pollution": 0, "trust": 0 },
+      "flags": ["oxygen_filter_rain_smell"]
+    },
+    "read": {
+      "text": "滤芯内侧刻着一句话：“如果还能闻到雨，就别说我们失败了。”",
+      "checklistState": "suspect",
+      "effects": { "funds": 0, "pollution": 1, "trust": 0 },
+      "flags": ["oxygen_filter_message_read"]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": { "funds": 2, "pollution": 0, "trust": 1 },
+      "previewLocks": { "funds": ["owner"], "pollution": ["scan"], "trust": ["owner"] },
+      "log": "氧气滤芯档案已归还殖民纪念馆。纪念馆回执：展柜附近短暂出现雨后泥土气味。",
+      "flags": ["oxygen_filter_returned"]
+    },
+    "seal": {
+      "effects": { "funds": -1, "pollution": 0, "trust": 0 },
+      "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["source"] },
+      "log": "氧气滤芯被封存。封存柜内出现轻微湿气。",
+      "flags": ["oxygen_filter_sealed"]
+    },
+    "destroy": {
+      "effects": { "funds": 0, "pollution": -1, "trust": -1 },
+      "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["owner"] },
+      "log": "氧气滤芯被销毁。空气中的雨味消失。",
+      "flags": ["oxygen_filter_destroyed"]
+    },
+    "sell": {
+      "effects": { "funds": 5, "pollution": 0, "trust": -2 },
+      "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["owner"] },
+      "log": "氧气滤芯被售出。买家评价：闻起来像一个没有发生过的春天。",
+      "flags": ["oxygen_filter_sold"]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "zero_g_coffee",
+  "code": "C-110",
+  "name": "失重咖啡杯",
+  "icon": "☕",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "comic_relief",
+    "rarity": "normal",
+    "weight": 3,
+    "riskLevel": 1,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "退役货运船舰桥休息区",
+    "owner": "疑似副驾驶",
+    "anomaly": "低",
+    "description": "白色陶瓷咖啡杯，杯壁印着某家航运公司的旧标志。杯中残留黑咖啡，但液面不受重力影响，悬浮在杯口下方。"
+  },
+  "investigations": {
+    "id": { "text": "编号 C-110 有效，登记为个人办公用品。", "checklistState": "pass", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["zero_g_coffee_id_checked"] },
+    "source": { "text": "来源为一艘退役货运船的舰桥休息区。该船休息区库存表中仍有一杯咖啡显示为“未喝完”。", "checklistState": "pass", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["zero_g_coffee_source_checked"] },
+    "owner": { "text": "疑似物主为该船副驾驶。其离职记录显示：从未喝完任何一杯咖啡。", "checklistState": "suspect", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["zero_g_coffee_owner_checked"] },
+    "scan": { "text": "杯内液体保持局部失重状态。异常等级低。", "checklistState": "suspect", "effects": { "funds": 0, "pollution": 0, "trust": 0 }, "flags": ["zero_g_coffee_scan_checked"] },
+    "read": { "text": "咖啡表面浮现一行小字：“我马上回来。”", "checklistState": "suspect", "effects": { "funds": 0, "pollution": 1, "trust": 0 }, "flags": ["zero_g_coffee_message_read"] }
+  },
+  "dispositions": {
+    "return": { "effects": { "funds": 2, "pollution": 1, "trust": 1 }, "previewLocks": { "funds": ["owner"], "pollution": ["read"], "trust": ["owner"] }, "log": "咖啡杯已归还。副驾驶旧档案中多出一条备注：短暂离岗，咖啡未取。", "flags": ["zero_g_coffee_returned"] },
+    "seal": { "effects": { "funds": -1, "pollution": 1, "trust": 0 }, "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["source"] }, "log": "咖啡杯被封存。杯中咖啡每天减少一毫米。", "flags": ["zero_g_coffee_sealed"] },
+    "destroy": { "effects": { "funds": 0, "pollution": -1, "trust": -1 }, "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["owner"] }, "log": "咖啡杯被销毁。销毁炉内短暂出现咖啡香。", "flags": ["zero_g_coffee_destroyed"] },
+    "sell": { "effects": { "funds": 4, "pollution": 0, "trust": -2 }, "previewLocks": { "funds": ["id"], "pollution": ["scan"], "trust": ["owner"] }, "log": "咖啡杯被售出。收藏商称它很适合加班。", "flags": ["zero_g_coffee_sold"] }
+  }
+}

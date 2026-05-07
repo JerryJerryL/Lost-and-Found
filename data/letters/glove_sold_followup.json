@@ -1,0 +1,30 @@
+{
+  "id": "glove_sold_followup",
+  "type": "letter",
+  "day": 4,
+  "title": "外部买家影像回执",
+  "sender": {
+    "name": "匿名收藏商",
+    "role": "私人回收频道",
+    "portrait": ""
+  },
+  "category": "followup",
+  "priority": "warning",
+  "body": [
+    "感谢出售 L-006 旧式宇航员手套。",
+    "附件影像已损坏，仅保留最后一帧：买家戴着手套，站在第404号失物招领处柜台前。",
+    "影像时间戳为今日 23:41。"
+  ],
+  "effects": {
+    "funds": 0,
+    "pollution": 2,
+    "trust": -2
+  },
+  "flagsRequired": [
+    "glove_sold"
+  ],
+  "flagsAdded": [
+    "glove_buyer_at_counter"
+  ],
+  "readOnce": true
+}

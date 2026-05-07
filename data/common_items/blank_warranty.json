@@ -1,0 +1,173 @@
+{
+  "id": "blank_warranty",
+  "code": "C-106",
+  "name": "空白保修单",
+  "icon": "🧾",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "rule_reversal",
+    "rarity": "normal",
+    "weight": 2,
+    "riskLevel": 1,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "公司维修档案箱",
+    "owner": "轨道回收联合公司",
+    "anomaly": "低",
+    "description": "一张完全空白的保修单，纸面没有任何填写痕迹。系统却显示它已经完整填写，并等待签收。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 C-106 有效，属于公司维修档案。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "blank_warranty_id_valid"
+      ]
+    },
+    "source": {
+      "text": "来源档案箱登记正常，最近一次开启记录为自动维护。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "blank_warranty_source_valid"
+      ]
+    },
+    "owner": {
+      "text": "公司确认为有效物主，并要求尽快归档。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "blank_warranty_owner_valid"
+      ]
+    },
+    "scan": {
+      "text": "纸面无墨迹，无压痕。扫描层显示一整页不可见签名。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "blank_warranty_invisible_signatures"
+      ]
+    },
+    "read": {
+      "text": "处理合规系统提示：该文件已完成，任何处理都会被视为重复处理。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "blank_warranty_compliance_conflict"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 2
+      },
+      "log": "保修单已归还公司档案部。系统自动生成一笔重复维修费用。",
+      "flags": [
+        "blank_warranty_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "read"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -1,
+        "pollution": 0,
+        "trust": 1
+      },
+      "log": "保修单被封存。档案状态保持为已完成。",
+      "flags": [
+        "blank_warranty_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -1,
+        "trust": -1
+      },
+      "log": "保修单被销毁。公司档案部仍显示文件等待签收。",
+      "flags": [
+        "blank_warranty_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 3,
+        "pollution": 1,
+        "trust": -3
+      },
+      "log": "保修单被卖给二手档案商。买家收到后表示：上面已经有我的签名。",
+      "flags": [
+        "blank_warranty_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    }
+  }
+}

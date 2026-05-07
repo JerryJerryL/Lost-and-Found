@@ -1,0 +1,179 @@
+{
+  "id": "extinct_ocean",
+  "code": "L-034",
+  "name": "灭绝星球的海水",
+  "icon": "🌊",
+  "internal": {
+    "day": 1,
+    "slot": "economy",
+    "primaryTag": "economy",
+    "tags": [
+      "economy",
+      "pollution",
+      "research_value"
+    ],
+    "riskLevel": 3,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "卡戎-9 干涸海盆",
+    "owner": "多方认领",
+    "anomaly": "中",
+    "description": "一只透明密封瓶，内部装着约三百毫升海水。瓶身标签已被盐分腐蚀，但瓶内仍有规律潮汐。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 L-034 存在，但市场估值字段被反复覆盖。最新估值：高价值液态遗产样本。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "ocean_high_value"
+      ]
+    },
+    "source": {
+      "text": "卡戎-9 的全部海洋已于40年前蒸发。当前星图中，该星球被标记为无液态水天体。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "ocean_source_extinct"
+      ]
+    },
+    "owner": {
+      "text": "三家研究机构、一名私人收藏商和一个已解散的殖民地政府同时申请认领。五份申请均显示为最高优先级。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "ocean_multiple_claimants"
+      ]
+    },
+    "scan": {
+      "text": "瓶内水位不受瓶身倾斜影响，却会随空间站引力系统变化而涨落。检测到微弱集体声纹，疑似多人同时低语。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "ocean_tide_detected"
+      ]
+    },
+    "read": {
+      "text": "打开声学隔离通道后，终端录得海浪声。海浪下方有人重复同一句话：“请把我们倒回岸边。”",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 3,
+        "trust": 0
+      },
+      "flags": [
+        "ocean_voices_heard"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 6,
+        "pollution": 3,
+        "trust": 2
+      },
+      "log": "样本被转交给最高优先级研究机构。次日，该机构数据库新增“海岸线恢复计划”，但卡戎-9 仍被标记为无液态水。",
+      "flags": [
+        "ocean_returned_to_research"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "source",
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -2,
+        "pollution": 2,
+        "trust": 1
+      },
+      "log": "海水样本被封存。夜间，封存柜内湿度升至100%，但柜外地面保持干燥。",
+      "flags": [
+        "ocean_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "source"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -2,
+        "pollution": -4,
+        "trust": -3
+      },
+      "log": "样本被高温蒸发。销毁炉排气口短暂传出潮声，随后所有申请认领记录同时撤回。",
+      "flags": [
+        "ocean_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan",
+          "read"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 12,
+        "pollution": 4,
+        "trust": -7
+      },
+      "log": "私人收藏商支付高额费用。系统随后显示：买家所在地新增一条未登记海岸线。",
+      "flags": [
+        "ocean_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan",
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    }
+  }
+}

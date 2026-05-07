@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>宇宙失物招领处 - 员工休息室</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app bedroom-app">
+    <header class="topbar" aria-label="休息室状态栏">
+      <div class="brand">
+        <small>Staff Bedroom / Station 404</small>
+        <strong>员工休息室</strong>
+      </div>
+      <div class="stat">
+        <small>Day</small>
+        <strong id="dayValue">3</strong>
+      </div>
+      <div class="stat">
+        <small>Action Points</small>
+        <strong id="apValue">12</strong>
+      </div>
+      <div class="stat" id="fundsStat">
+        <small>Funds</small>
+        <strong id="fundsValue">18</strong>
+      </div>
+      <div class="stat" id="pollutionStat">
+        <small>Pollution</small>
+        <strong id="pollutionValue">12</strong>
+      </div>
+      <div class="stat" id="trustStat">
+        <small>Trust</small>
+        <strong id="trustValue">72</strong>
+      </div>
+    </header>
+
+    <main class="bedroom-main">
+      <section class="panel bedroom-status-panel">
+        <div class="panel-title">
+          <div>
+            <small>Room</small>
+            <h2>休息室状态</h2>
+          </div>
+          <span class="tag" id="bonusTag">明日 AP +0</span>
+        </div>
+        <div class="room-grid">
+          <div class="room-field">
+            <small>收音机</small>
+            <strong id="radioValue">未拥有</strong>
+          </div>
+          <div class="room-field">
+            <small>小被被</small>
+            <strong id="blanketValue">未拥有</strong>
+          </div>
+          <div class="room-field">
+            <small>合规盖章器</small>
+            <strong id="pendingTrustValue">待生效 +0</strong>
+          </div>
+          <div class="room-field">
+            <small>今日购买记录</small>
+            <strong id="purchaseCountValue">0</strong>
+          </div>
+        </div>
+        <div class="device-list" id="deviceList"></div>
+      </section>
+
+      <section class="panel shop-panel">
+        <div class="panel-title">
+          <div>
+            <small>Shop</small>
+            <h2>夜班补给柜</h2>
+          </div>
+          <span class="tag">localStorage 存档</span>
+        </div>
+        <div class="shop-grid" id="shopGrid"></div>
+      </section>
+
+      <section class="panel rest-panel">
+        <div class="panel-title">
+          <div>
+            <small>Rest</small>
+            <h2>休息记录</h2>
+          </div>
+          <span class="tag" id="bedroomLogCount">0 条</span>
+        </div>
+        <ul class="log bedroom-log" id="bedroomLogList" aria-live="polite"></ul>
+        <div class="rest-actions">
+          <button class="btn primary" id="finishRestButton">结束休息，进入下一天</button>
+        </div>
+      </section>
+    </main>
+
+    <button class="clear-save-button" id="clearSaveButton">清除存档</button>
+  </div>
+
+  <script src="bedroom.js"></script>
+</body>
+</html>

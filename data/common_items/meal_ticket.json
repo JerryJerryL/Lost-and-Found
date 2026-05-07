@@ -1,0 +1,173 @@
+{
+  "id": "meal_ticket",
+  "code": "C-104",
+  "name": "重复登记的餐券",
+  "icon": "🎟️",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "comic_relief",
+    "rarity": "normal",
+    "weight": 3,
+    "riskLevel": 1,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "第404号站点食堂旧抽屉",
+    "owner": "未知用餐人",
+    "anomaly": "低",
+    "description": "一张皱巴巴的食堂餐券，票面写着：今日套餐。系统显示它被登记了4096次。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 C-104 有效，但重复登记次数异常：4096。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "meal_ticket_duplicate_count"
+      ]
+    },
+    "source": {
+      "text": "来源为本站食堂旧抽屉。本站食堂已停用，但库存表每天自动减少一份套餐。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "meal_ticket_canteen_closed"
+      ]
+    },
+    "owner": {
+      "text": "无有效认领人。系统备注：用餐人已取餐，尚未排队。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "meal_ticket_queue_conflict"
+      ]
+    },
+    "scan": {
+      "text": "餐券表面检测到番茄汤和机械润滑油残留。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "meal_ticket_scanned"
+      ]
+    },
+    "read": {
+      "text": "餐券背面浮现今日菜单：汤，面包，以及一份从未存在的晚餐。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "meal_ticket_menu_read"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 1,
+        "pollution": 1,
+        "trust": 1
+      },
+      "log": "餐券被退回食堂系统。库存表新增4096份今日套餐。",
+      "flags": [
+        "meal_ticket_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -1,
+        "pollution": 0,
+        "trust": 1
+      },
+      "log": "餐券被封存。封存柜内出现淡淡番茄汤味。",
+      "flags": [
+        "meal_ticket_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": 0,
+        "pollution": -1,
+        "trust": -1
+      },
+      "log": "餐券被销毁。食堂库存少了一份从未存在的晚餐。",
+      "flags": [
+        "meal_ticket_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 3,
+        "pollution": 1,
+        "trust": -2
+      },
+      "log": "餐券被卖给怀旧收藏商。买家问：这份套餐会不会无限续杯？",
+      "flags": [
+        "meal_ticket_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    }
+  }
+}

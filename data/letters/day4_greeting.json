@@ -1,0 +1,26 @@
+{
+  "id": "day4_greeting",
+  "type": "letter",
+  "day": 4,
+  "title": "第4日晨间通知",
+  "sender": {
+    "name": "奥尔文主管",
+    "role": "公司回收部主管",
+    "portrait": ""
+  },
+  "category": "greeting",
+  "priority": "normal",
+  "body": [
+    "管理员，早。",
+    "昨日第404号站点提交的审查报告已收到。部分记录存在轻微延迟，但仍可接受。",
+    "今日仍将送达六件失物。请勿向外部人员透露文件内部分类。"
+  ],
+  "effects": {
+    "funds": 0,
+    "pollution": 0,
+    "trust": 0
+  },
+  "flagsRequired": [],
+  "flagsAdded": ["day4_greeting_read"],
+  "readOnce": true
+}

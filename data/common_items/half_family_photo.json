@@ -1,0 +1,173 @@
+{
+  "id": "half_family_photo",
+  "code": "C-107",
+  "name": "半张家庭合影",
+  "icon": "🖼️",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "emotional",
+    "rarity": "normal",
+    "weight": 2,
+    "riskLevel": 2,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "民用撤离舱残片",
+    "owner": "撤离家庭档案",
+    "anomaly": "低",
+    "description": "一张被撕去一半的家庭合影。照片中剩下的人都没有看向镜头，而是看向缺失的那一半。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 C-107 有效，登记为民用影像遗物。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "half_photo_id_checked"
+      ]
+    },
+    "source": {
+      "text": "撤离舱事故记录存在。残片中未发现照片另一半。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "half_photo_source_valid"
+      ]
+    },
+    "owner": {
+      "text": "照片中三名可见家庭成员均有档案记录。家庭成员总数显示为四。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "half_photo_fourth_member"
+      ]
+    },
+    "scan": {
+      "text": "缺失部分不是物理撕裂，而是从成像记录中消失。纸张边缘没有纤维断裂。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 1,
+        "trust": 0
+      },
+      "flags": [
+        "half_photo_image_erased"
+      ]
+    },
+    "read": {
+      "text": "照片背面浮现一句铅笔字：我们都记得他站在那里。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "half_photo_note_read"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 2,
+        "pollution": 2,
+        "trust": 2
+      },
+      "log": "家庭合影已归还。收件人表示照片终于完整，但回执图像仍只有半张。",
+      "flags": [
+        "half_photo_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "owner"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -1,
+        "pollution": 1,
+        "trust": 1
+      },
+      "log": "家庭合影被封存。照片缺失处在夜间开始显影。",
+      "flags": [
+        "half_photo_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -2,
+        "trust": -2
+      },
+      "log": "照片被销毁。家庭档案成员总数从四变为三。",
+      "flags": [
+        "half_photo_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 4,
+        "pollution": 2,
+        "trust": -3
+      },
+      "log": "照片被售出。买家询问：为什么照片里的人都看着我旁边？",
+      "flags": [
+        "half_photo_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    }
+  }
+}

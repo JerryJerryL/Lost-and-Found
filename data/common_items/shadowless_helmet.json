@@ -1,0 +1,173 @@
+{
+  "id": "shadowless_helmet",
+  "code": "C-105",
+  "name": "没有影子的头盔",
+  "icon": "🪖",
+  "internal": {
+    "itemClass": "common",
+    "pool": "default",
+    "role": "pollution",
+    "rarity": "normal",
+    "weight": 2,
+    "riskLevel": 3,
+    "isMainline": false
+  },
+  "dossier": {
+    "source": "外勤事故回收箱",
+    "owner": "已故外勤员",
+    "anomaly": "中",
+    "description": "一顶外勤头盔，表面有细小划痕。灯光照射下，头盔不会投下影子。内部通讯频道偶尔传出呼吸声。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 C-105 有效，登记为外勤事故遗物。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "shadowless_helmet_id_checked"
+      ]
+    },
+    "source": {
+      "text": "外勤事故记录存在。事故报告中所有影像资料均过曝，无法确认佩戴者影子。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "shadowless_helmet_source_suspect"
+      ]
+    },
+    "owner": {
+      "text": "疑似物主已确认死亡。家属申请归还，但备注要求不要附带事故影像。",
+      "checklistState": "pass",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "shadowless_helmet_owner_valid"
+      ]
+    },
+    "scan": {
+      "text": "头盔内部无生命体征。呼吸声频率稳定，但声源定位在扫描仪后方。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "shadowless_helmet_breath_behind"
+      ]
+    },
+    "read": {
+      "text": "通讯频道中传来一句断续语音：不要把我的影子一起寄回去。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 3,
+        "trust": 0
+      },
+      "flags": [
+        "shadowless_helmet_voice_read"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 3,
+        "pollution": 4,
+        "trust": 1
+      },
+      "log": "头盔已归还家属。回执影像中，家属身后少了一个影子。",
+      "flags": [
+        "shadowless_helmet_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "owner"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -2,
+        "pollution": 2,
+        "trust": 2
+      },
+      "log": "头盔被封存。监控显示封存柜投影中多出一个人影。",
+      "flags": [
+        "shadowless_helmet_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -1,
+        "pollution": -4,
+        "trust": -1
+      },
+      "log": "头盔被销毁。销毁炉影子短暂延迟了3秒。",
+      "flags": [
+        "shadowless_helmet_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 6,
+        "pollution": 4,
+        "trust": -5
+      },
+      "log": "头盔被售出。买家随后上传了一张没有影子的自拍。",
+      "flags": [
+        "shadowless_helmet_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "scan"
+        ],
+        "trust": [
+          "owner"
+        ]
+      }
+    }
+  }
+}

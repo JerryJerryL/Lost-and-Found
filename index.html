@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>宇宙失物招领处 - 异常档案管理</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar" aria-label="站点状态栏">
+      <div class="brand">
+        <small>Archive Terminal / Station 404</small>
+        <strong>宇宙失物招领处</strong>
+      </div>
+      <div class="stat">
+        <small>Day</small>
+        <strong id="dayValue">3</strong>
+      </div>
+      <div class="stat">
+        <small>Action Points</small>
+        <strong id="apValue">12</strong>
+      </div>
+      <div class="stat" id="fundsStat">
+        <small>Funds</small>
+        <strong id="fundsValue">18</strong>
+      </div>
+      <div class="stat" id="pollutionStat">
+        <small>Pollution</small>
+        <strong id="pollutionValue">12</strong>
+      </div>
+      <div class="stat" id="trustStat">
+        <small>Trust</small>
+        <strong id="trustValue">72</strong>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="panel">
+        <div class="panel-title">
+          <div>
+            <small>Lost Property</small>
+            <h2>今日文件列表</h2>
+          </div>
+          <span class="tag" id="remainingTag">载入中</span>
+        </div>
+        <div class="item-list" id="itemList"></div>
+      </section>
+
+      <section class="panel dossier">
+        <div class="panel-title">
+          <div>
+            <small>Dossier</small>
+            <h2>失物档案与调查结果</h2>
+          </div>
+          <span class="tag" id="processedTag">未处理</span>
+        </div>
+        <div class="file-hero">
+          <div class="big-icon" id="itemIcon">?</div>
+          <div>
+            <h1 id="itemName">等待载入</h1>
+            <p id="itemCode">编号：--</p>
+          </div>
+        </div>
+        <div class="data-grid">
+          <div class="field">
+            <small>来源</small>
+            <strong id="itemSource">--</strong>
+          </div>
+          <div class="field">
+            <small>疑似物主</small>
+            <strong id="itemOwner">--</strong>
+          </div>
+          <div class="field">
+            <small>初始异常读数</small>
+            <strong id="itemAnomaly">--</strong>
+          </div>
+          <div class="field">
+            <small>档案状态</small>
+            <strong id="itemStatus">--</strong>
+          </div>
+        </div>
+        <div class="investigation">
+          <p class="description" id="itemDescription"></p>
+          <div class="button-grid" id="investigationButtons"></div>
+          <div class="results" id="resultList" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <aside class="right-stack">
+        <section class="panel">
+          <div class="panel-title">
+            <div>
+              <small>Checklist</small>
+              <h2>标准审查清单</h2>
+            </div>
+            <span class="tag">5 项</span>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <div>
+              <small>Disposition</small>
+              <h2>处理决定</h2>
+            </div>
+          </div>
+          <div class="actions" id="actionButtons"></div>
+        </section>
+      </aside>
+    </main>
+
+    <section class="panel log-panel">
+      <div class="panel-title">
+        <div>
+          <small>System Log</small>
+          <h2>底部系统日志</h2>
+        </div>
+        <span class="tag" id="logCount">0 条</span>
+      </div>
+      <ul class="log" id="logList" aria-live="polite"></ul>
+    </section>
+  </div>
+
+  <div class="modal" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="dialog">
+      <header>
+        <h3 id="confirmTitle">确认处理</h3>
+      </header>
+      <div class="dialog-content">
+        <div id="confirmText"></div>
+        <div class="delta-grid" id="deltaGrid"></div>
+        <div class="summary-box" id="confirmSummary"></div>
+        <div class="dialog-actions">
+          <button class="btn" id="cancelDecision">取消</button>
+          <button class="btn primary" id="confirmDecision">确认执行</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+{
+  "id": "black_box",
+  "code": "L-041",
+  "name": "没有母船的黑匣子",
+  "icon": "▣",
+  "internal": {
+    "day": 5,
+    "slot": "mainline",
+    "primaryTag": "mainline",
+    "tags": [
+      "mainline",
+      "signal",
+      "identity"
+    ],
+    "riskLevel": 3,
+    "isMainline": true
+  },
+  "dossier": {
+    "source": "未登记跃迁航道",
+    "owner": "未知航船",
+    "anomaly": "中",
+    "description": "一个老式飞船黑匣子，外壳无撞击痕迹。登记系统无法匹配母船编号。"
+  },
+  "investigations": {
+    "id": {
+      "text": "编号 L-041 刚刚生成。系统显示该编号由你在七分钟后手动建立。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "black_box_future_record"
+      ]
+    },
+    "source": {
+      "text": "跃迁航道不存在于当前星图，但残留辐射与第404号站点外壳一致。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "black_box_station_trace"
+      ]
+    },
+    "owner": {
+      "text": "未发现母船登记。黑匣子内部反复播放一句话：请管理员确认幸存者名单。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 0,
+        "trust": 0
+      },
+      "flags": [
+        "black_box_survivor_list"
+      ]
+    },
+    "scan": {
+      "text": "设备内部温度稳定，信号源却显示位于你当前终端下方。",
+      "checklistState": "suspect",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "black_box_signal_under_terminal"
+      ]
+    },
+    "read": {
+      "text": "日志最后一行：第404号站点请求救援。发送时间为明日。",
+      "checklistState": "conflict",
+      "effects": {
+        "funds": 0,
+        "pollution": 2,
+        "trust": 0
+      },
+      "flags": [
+        "black_box_tomorrow_distress"
+      ]
+    }
+  },
+  "dispositions": {
+    "return": {
+      "effects": {
+        "funds": 5,
+        "pollution": 4,
+        "trust": 1
+      },
+      "log": "黑匣子被转交给航道管理局。数分钟后，管理局回执显示：未接收任何物品。",
+      "flags": [
+        "black_box_returned"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "source"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "seal": {
+      "effects": {
+        "funds": -2,
+        "pollution": 2,
+        "trust": 2
+      },
+      "log": "黑匣子被封存。封存柜内持续传出微弱求救信号。",
+      "flags": [
+        "black_box_sealed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "source",
+          "read"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    },
+    "destroy": {
+      "effects": {
+        "funds": -2,
+        "pollution": -3,
+        "trust": -2
+      },
+      "log": "黑匣子被销毁。终端短暂显示：救援请求已取消。",
+      "flags": [
+        "black_box_destroyed"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "read"
+        ],
+        "trust": [
+          "source"
+        ]
+      }
+    },
+    "sell": {
+      "effects": {
+        "funds": 10,
+        "pollution": 4,
+        "trust": -6
+      },
+      "log": "黑匣子被出售给信号商。对方随后询问：你们站点还剩几名幸存者？",
+      "flags": [
+        "black_box_sold"
+      ],
+      "previewLocks": {
+        "funds": [
+          "id"
+        ],
+        "pollution": [
+          "source"
+        ],
+        "trust": [
+          "read"
+        ]
+      }
+    }
+  }
+}
