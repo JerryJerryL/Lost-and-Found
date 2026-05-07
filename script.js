@@ -35,6 +35,7 @@ const DEFAULT_PREVIEW_LOCKS = {
 const START_DAY = 3;
 const DAILY_ACTION_POINTS = 15;
 const SAVE_KEY = "station404_save";
+const BACKGROUND_MUSIC_VOLUME = 0.3;
 
 function getDefaultSave() {
   return {
@@ -89,6 +90,19 @@ function loadGame() {
     console.warn("Save corrupted, using default save.", error);
     return defaults;
   }
+}
+
+function setupBackgroundMusic() {
+  const audio = document.getElementById("backgroundMusic");
+  if (!audio) return;
+
+  audio.volume = BACKGROUND_MUSIC_VOLUME;
+
+  document.addEventListener("click", () => {
+    audio.play().catch((error) => {
+      console.warn("Background music could not start.", error);
+    });
+  }, { once: true });
 }
 
 // ==============================
@@ -1029,4 +1043,5 @@ el.confirmModal.addEventListener("click", (event) => {
   }
 });
 
+setupBackgroundMusic();
 startGame();
