@@ -163,6 +163,14 @@
       letter-spacing: 0.03em;
     }
 
+    .panel-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
     .tag {
       display: inline-flex;
       align-items: center;
@@ -405,6 +413,15 @@
     .btn.primary {
       border-color: rgba(67, 242, 210, 0.65);
       color: #dffdf8;
+    }
+
+    .btn.radio-button {
+      min-height: 28px;
+      padding: 5px 10px;
+      color: #dffdf8;
+      border-color: rgba(67, 242, 210, 0.55);
+      font-size: 12px;
+      white-space: nowrap;
     }
 
     .btn.warn {

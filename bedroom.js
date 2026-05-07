@@ -1,6 +1,7 @@
 const DAILY_ACTION_POINTS = 15;
 const SAVE_KEY = "station404_save";
 const BACKGROUND_MUSIC_VOLUME = 0.35;
+const BACKGROUND_MUSIC_TITLE = "jazz_piano_medley_81";
 
 function getDefaultSave() {
   return {
@@ -59,15 +60,21 @@ function loadGame() {
 
 function setupBackgroundMusic() {
   const audio = document.getElementById("backgroundMusic");
+  const button = document.getElementById("playRadioButton");
   if (!audio) return;
 
   audio.volume = BACKGROUND_MUSIC_VOLUME;
 
-  document.addEventListener("click", () => {
-    audio.play().catch((error) => {
+  button?.addEventListener("click", () => {
+    audio.play().then(() => {
+      addBedroomLog(`当前播放广播：${BACKGROUND_MUSIC_TITLE}`);
+      renderBedroomLog();
+      button.textContent = "广播播放中";
+      button.disabled = true;
+    }).catch((error) => {
       console.warn("Background music could not start.", error);
     });
-  }, { once: true });
+  });
 }
 
 let state = loadGame();
@@ -243,6 +250,7 @@ const el = {
   shopGrid: document.getElementById("shopGrid"),
   bedroomLogCount: document.getElementById("bedroomLogCount"),
   bedroomLogList: document.getElementById("bedroomLogList"),
+  playRadioButton: document.getElementById("playRadioButton"),
   finishRestButton: document.getElementById("finishRestButton"),
   clearSaveButton: document.getElementById("clearSaveButton")
 };

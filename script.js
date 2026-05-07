@@ -36,6 +36,7 @@ const START_DAY = 3;
 const DAILY_ACTION_POINTS = 15;
 const SAVE_KEY = "station404_save";
 const BACKGROUND_MUSIC_VOLUME = 0.3;
+const BACKGROUND_MUSIC_TITLE = "8bit Bossa";
 
 function getDefaultSave() {
   return {
@@ -94,15 +95,20 @@ function loadGame() {
 
 function setupBackgroundMusic() {
   const audio = document.getElementById("backgroundMusic");
+  const button = document.getElementById("playRadioButton");
   if (!audio) return;
 
   audio.volume = BACKGROUND_MUSIC_VOLUME;
 
-  document.addEventListener("click", () => {
-    audio.play().catch((error) => {
+  button?.addEventListener("click", () => {
+    audio.play().then(() => {
+      addLog(`当前播放广播：${BACKGROUND_MUSIC_TITLE}`);
+      button.textContent = "广播播放中";
+      button.disabled = true;
+    }).catch((error) => {
       console.warn("Background music could not start.", error);
     });
-  }, { once: true });
+  });
 }
 
 // ==============================
@@ -169,6 +175,7 @@ const el = {
   actionButtons: document.getElementById("actionButtons"),
   logList: document.getElementById("logList"),
   logCount: document.getElementById("logCount"),
+  playRadioButton: document.getElementById("playRadioButton"),
   confirmModal: document.getElementById("confirmModal"),
   confirmTitle: document.getElementById("confirmTitle"),
   confirmText: document.getElementById("confirmText"),
